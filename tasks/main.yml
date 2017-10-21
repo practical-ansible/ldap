@@ -7,11 +7,11 @@
     msg: You must define base domain
   when: base_domain is not defined
 
-- include: deps.yml
-- include: config.yml
-- include: structure.yml
-- include: admin.yml
-- include: organization.yml
+- include_tasks: deps.yml
+- include_tasks: config.yml
+- include_tasks: structure.yml
+- include_tasks: admin.yml
+- include_tasks: organization.yml
   with_items: '{{organizations}}'
   loop_control:
     loop_var: organization
