@@ -1,3 +1,12 @@
----
-dependencies:
-  - { role: common, use_ldap: true }
+galaxy_info:
+  author: Pavel Žák
+  description: OpenLDAP server for your puppet
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+   - name: Ubuntu
+     versions:
+     - all
+
+  galaxy_tags:
+    - ldap
