@@ -1,10 +1,13 @@
 ---
 - name: Install LDAP dependencies
-  action: apt pkg={{item}} state=present
-  with_items:
-    - slapd
-    - ldap-utils
-    - python-ldap
+  apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - slapd
+      - ldap-utils
+      - python-ldap
 
 - name: Start slapd
   systemd:

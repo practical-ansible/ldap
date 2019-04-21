@@ -1,7 +1,7 @@
 ---
 - name: Generate LDAP password
   set_fact:
-    ldap_password: "{{ lookup('passwordstore', '{{base_domain}}/ldap create=True') }}"
+    ldap_password: "{{ lookup('passwordstore', '{{ base_domain }}/ldap create=True') }}"
 
 - name: Configure ldap.conf
   template:
@@ -16,7 +16,7 @@
     values: "{{ item.value }}"
   with_items:
     - name: olcSuffix
-      value: '{{ldap_base_dc}}'
+      value: '{{ ldap_base_dc }}'
 
 - name: Configure LDAP modules
   ldap_entry:

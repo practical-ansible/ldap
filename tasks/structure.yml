@@ -7,11 +7,11 @@
     name: olcAccess
     values:
       - >-
-        {0}to dn.subtree="{{ldap_base_dc}}"
-        by dn.exact="{{ldap_dn_external}}" manage
-        by dn.exact="{{ldap_dn_bind}}" manage
-        by dn.children="{{ldap_dn_admin_group}}" manage
-        by dn.children="{{ldap_dn_services_group}}" write
+        {0}to dn.subtree="{{ ldap_base_dc }}"
+        by dn.exact="{{ ldap_dn_external }}" manage
+        by dn.exact="{{ ldap_dn_bind }}" manage
+        by dn.children="{{ ldap_dn_admin_group }}" manage
+        by dn.children="{{ ldap_dn_services_group }}" write
         by self write
         by anonymous auth
         by * none
@@ -21,10 +21,10 @@
         by anonymous auth
         by * none
 
-- name: 'Create root object "{{ldap_base_dc}}"'
+- name: 'Create root object "{{ ldap_base_dc }}"'
   ldap_entry:
     state: present
-    dn: '{{ldap_base_dc}}'
+    dn: '{{ ldap_base_dc }}'
     objectClass:
       - dcObject
       - organization
@@ -35,13 +35,13 @@
 - name: Create basic organizational units
   ldap_entry:
     state: present
-    dn: '{{item.dn}}'
+    dn: '{{ item.dn }}'
     params:
-      ou: '{{item.ou}}'
+      ou: '{{ item.ou }}'
     objectClass:
       - organizationalUnit
   with_items:
-    - dn: 'ou=services,{{ldap_base_dc}}'
+    - dn: 'ou=services,{{ ldap_base_dc }}'
       ou: services
-    - dn: 'ou=admin,{{ldap_base_dc}}'
+    - dn: 'ou=admin,{{ ldap_base_dc }}'
       ou: admin

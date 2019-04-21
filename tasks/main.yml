@@ -12,6 +12,6 @@
 - include_tasks: structure.yml
 - include_tasks: admin.yml
 - include_tasks: organization.yml
-  with_items: '{{organizations}}'
+  with_items: '{{ organizations }}'
   loop_control:
     loop_var: organization
