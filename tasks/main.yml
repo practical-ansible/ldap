@@ -1,9 +1,11 @@
 # Common Tasks
 ---
-- fail:
+- name: Verify organizations are defined
+  fail:
     msg: You must define organizations
   when: organizations is not defined
-- fail:
+- name: Verify base domain is defined
+  fail:
     msg: You must define base domain
   when: base_domain is not defined
 
